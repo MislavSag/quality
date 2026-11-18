@@ -1,0 +1,24 @@
+{
+  "tail_fraction": 0.2,
+  "long_weight": 1.0,
+  "short_weight": -1.0,
+  "initial_nav": 10000000,
+  "cash_interest_rate": 0.0,
+  "availability_seed": "profitability-monthly-v1",
+  "scenarios": [
+    {"name": "gross_unconstrained", "label": "Bruto", "trading_bps": 0, "borrow_rate": 0, "unavailable_short_fraction": 0, "short_adv_fraction_cap": null},
+    {"name": "cost5_borrow0p5", "label": "5 bps + 0,5% posudba", "trading_bps": 5, "borrow_rate": 0.005, "unavailable_short_fraction": 0, "short_adv_fraction_cap": null},
+    {"name": "cost10_borrow3", "label": "10 bps + 3% posudba", "trading_bps": 10, "borrow_rate": 0.03, "unavailable_short_fraction": 0, "short_adv_fraction_cap": null}
+  ],
+  "legs": ["long_short", "long", "short"],
+  "missing_policies": ["flat_unknown", "adverse_unknown"],
+  "missing_return_main": "zero underlying return and assumed liquidation, same accounting as prior profitability analysis",
+  "missing_return_sensitivity": "underlying -100% on unknown longs, +100% on unknown shorts",
+  "no_indicator_policy": "risk-free cash; retain the full calendar and flag availability explicitly",
+  "single_sides": "separately rebalanced +100% long and -100% short books; positive short return means short profit",
+  "active_funding": "no collateral interest or cash funding in active factor months, same as previous profitability books",
+  "regime_cost_policy": "map continuously rebalanced net monthly returns into the gated calendar; regime switching turnover not recomputed",
+  "ic": "Spearman correlation; cosine on internal score/50-1; cosine on formation-centered composite ranks; observed outcomes only, minimum 100",
+  "hac_lags": 3,
+  "weights_fitted_to_returns": false
+}

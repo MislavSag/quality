@@ -1,0 +1,23 @@
+{
+  "profitability": ["fcf_assets_ttm", "cfo_assets_ttm", "gp_assets_ttm"],
+  "controls": ["log_size", "value", "momentum", "beta", "log_residual_vol", "log_illiquidity"],
+  "transformations": ["zscore", "rank_normal"],
+  "weighting": ["sqrt_cap", "inverse_specific_variance"],
+  "winsor_quantiles": [0.01, 0.99],
+  "standardization": "capitalization-weighted mean; equal-weight population standard deviation",
+  "rank_normal": "normal quantile of (average rank - 0.5) / N, followed by the same standardization",
+  "minimum_stocks": 100,
+  "specific_variance": {
+    "ewma_half_life_months": 12,
+    "minimum_observed_residuals": 12,
+    "initial_proxy": "(PV_REALIZED_VOL_63D^2 - PV_SYSTEMATIC_VOL_SPY_63D^2) / 12",
+    "floor_fraction_of_cross_section_median": 0.1,
+    "weight_clip_quantiles": [0.01, 0.99],
+    "residual_model": "sqrt-cap WLS on intercept and transformed controls; only observed returns, exit_date <= signal_date"
+  },
+  "portfolio_gross": 2.0,
+  "initial_nav": 10000000,
+  "sectors": "omitted: historical point-in-time classifications not confirmed",
+  "unknown_returns": "formation universe retained; zero underlying return in primary diagnostic, adverse directional sensitivity in accounting",
+  "primary": "zscore__sqrt_cap"
+}

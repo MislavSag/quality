@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23365eea'/%3E%3Ctext x='8' y='24' font-family='Arial' font-size='24' font-weight='700' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
+<title>Quality · Profitabilna komponenta</title>
+<style>__REPORT_CSS__</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Quality, početak izvještaja"><span class="brand-icon" aria-hidden="true">Q<span>↗</span></span>QUALITY<span class="brand-divider">/</span><span class="brand-light">RESEARCH</span></a>
+  <div class="top-right"><span class="status-dot"></span> Bruto rezultati <span class="top-separator">·</span> Mjesečna analiza</div>
+</header>
+<div class="page-shell">
+  <aside class="sidebar">
+    <details class="filter-panel" open>
+      <summary><span>Filtri analize</span><span class="filter-chevron" aria-hidden="true">⌄</span></summary>
+      <div class="filter-content">
+        <div class="filter-heading">RAZDOBLJE DRŽANJA</div>
+        <div class="date-grid"><label>Od<input id="from" type="month" aria-label="Početni mjesec držanja"></label><label>Do<input id="to" type="month" aria-label="Završni mjesec držanja"></label></div>
+        <div class="filter-heading regime-heading">TRŽIŠNI REŽIMI <span>u trenutku formacije</span></div>
+        <div id="regimeFilters" class="regime-fields"></div>
+        <p class="filter-help">Filtri se kombiniraju. Režim je poznat prije ulaska u portfelj. Faktor se može aktivirati u zajedničkom uzorku od <span id="commonCount"></span> mjeseca. U svim ostalim mjesecima drži se RF cash.</p>
+        <button class="reset-button" id="reset">Očisti sve filtre <span aria-hidden="true">↺</span></button>
+      </div>
+    </details>
+    <div class="allocation-panel"><div class="filter-heading">STRUKTURA PORTFELJA</div><div id="allocation"></div><p>Jednake kapitalne težine.<br>Mjesečni rebalans, bez optimizacije.</p></div>
+    <a class="method-link" href="#methodology">O podacima i metodologiji <span aria-hidden="true">↘</span></a>
+  </aside>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">FAKTORSKO ISTRAŽIVANJE <span>·</span> 2007—2026</div>
+      <div class="hero-heading"><div><h1>Quality: profitabilna komponenta</h1><p>Dosadašnji portfelj profitabilnosti u širem projektu quality faktora.</p></div><button class="export-button" id="export"><span aria-hidden="true">↓</span> Preuzmi odabir <span class="file-tag">CSV</span></button></div>
+      <p class="panel-footnote">Profitabilnost je jedna dimenzija kvalitete. Ove rezultate još ne tumačimo kao test potpunog quality faktora. <a href="../quality_literature/report.html">Pregled literature i metodologija ↗</a></p><div class="quick-filters" aria-label="Brzi odabir režima"><span>Brzi pogled</span><button data-preset="all" class="preset active">Svi mjeseci</button><button data-preset="spy_vol21">Visoka volatilnost</button><button data-preset="spy_trend126">Padajući trend</button><button data-preset="breadth126">Uska širina</button></div>
+    </section>
+    <section class="selection-bar"><div><label class="sr-only" for="focal">Glavna serija</label><select id="focal" aria-label="Glavna serija"></select><span id="selectionDescription"></span></div><span class="sample-badge" id="sampleBadge"></span></section>
+    <div id="activeFilters" class="active-filters"></div>
+    <p id="sampleAlert" class="sample-alert" role="status" hidden></p>
+    <section class="kpi-grid" aria-live="polite" aria-label="Glavni pokazatelji">
+      <article class="kpi primary"><div class="kpi-label" id="returnLabel">Godišnji prinos · CAGR</div><div class="kpi-value" id="returnValue">—</div><div class="kpi-note" id="returnNote"></div><span class="kpi-mark" aria-hidden="true">↗</span></article>
+      <article class="kpi"><div class="kpi-label">Sharpe vs RF</div><div class="kpi-value" id="sharpeValue">—</div><div class="kpi-note" id="sharpeNote"></div></article>
+      <article class="kpi"><div class="kpi-label">Godišnja volatilnost</div><div class="kpi-value" id="volValue">—</div><div class="kpi-note" id="volNote"></div></article>
+      <article class="kpi"><div class="kpi-label">Faktorski mjeseci</div><div class="kpi-value" id="monthsValue">—</div><div class="kpi-note" id="monthsNote"></div></article>
+    </section>
+    <section class="panel chart-panel">
+      <div class="panel-heading"><div><div class="overline">IZVEDBA KROZ VRIJEME</div><h2 id="chartTitle">Rast vrijednosti portfelja</h2></div><div class="segmented" aria-label="Prikaz grafa"><button data-chart="equity" class="active" aria-pressed="true">Vrijednost</button><button data-chart="drawdown" aria-pressed="false">Drawdown</button></div></div>
+      <div class="series-toolbar"><span>Serije na grafu</span><div><button id="showAllSeries">Sve serije</button><button id="showFocalSeries">Samo glavna</button></div></div>
+      <div class="series-legend" id="seriesLegend" role="group" aria-label="Odaberi više serija za usporedbu"></div>
+      <div class="saved-series-toolbar"><button id="addComparison">＋ Dodaj usporedbu</button><span>Sačuvaj glavnu seriju s trenutačnim filtrima, zatim promijeni odabir.</span></div>
+      <div id="savedSeries" class="saved-series" aria-label="Sačuvane usporedbe"></div>
+      <p id="comparisonStatus" class="comparison-status" role="status" hidden></p>
+      <div id="chartArea" class="chart-area"><div id="chart"></div><div id="chartTooltip" class="chart-tooltip" hidden></div></div>
+      <p class="chart-note" id="chartNote"></p>
+    </section>
+    <section class="panel comparison-panel">
+      <div class="panel-heading"><div><div class="overline">FAKTORI I PORTFELJI</div><h2>Usporedba rezultata</h2></div><span class="small-note">Isti datumski raspon, uključujući cash</span></div>
+      <div class="table-scroll"><table class="comparison-table"><thead><tr><th scope="col">Serija</th><th scope="col" id="tableReturnLabel">CAGR</th><th scope="col">Volatilnost</th><th scope="col">Sharpe vs RF</th><th scope="col">Najveći pad<span class="th-note" id="drawdownLabel">mjesečni krajevi</span></th><th scope="col">Pozitivni mj.</th></tr></thead><tbody id="comparisonBody"></tbody></table></div>
+      <p class="panel-footnote" id="tableNote"></p>
+    </section>
+    <div class="two-columns">
+      <section class="panel regime-panel"><div class="panel-heading"><div><div class="overline">UVJETNI REZULTATI</div><h2>Usporedba režima</h2></div></div><label class="sr-only" for="compareRegime">Podjela za usporedbu režima</label><select id="compareRegime" aria-label="Podjela za usporedbu režima"></select><div class="regime-compare-top"><span id="regimeSeries"></span><div class="segmented small"><button data-regime-metric="cagr" class="active" aria-pressed="true">CAGR</button><button data-regime-metric="sharpe" aria-pressed="false">Sharpe</button></div></div><div id="regimeBars"></div><p class="panel-footnote">Poštuje datumski raspon i ostale filtre; odabranu podjelu prikazuje u oba stanja. Prinos = CAGR cijele putanje faktor/RF.</p></section>
+      <section class="panel correlation-panel"><div class="panel-heading"><div><div class="overline">DIVERSIFIKACIJA</div><h2>Koliko se faktori preklapaju?</h2></div></div><div id="correlationMatrix"></div><div class="correlation-scale"><span>−1</span><span class="scale-gradient"></span><span>+1</span></div><p class="panel-footnote">Korelacija izvornih faktorskih prinosa samo u aktivnim mjesecima. Na malom uzorku procjena je nestabilna.</p></section>
+    </div>
+    <section class="panel heatmap-panel"><div class="panel-heading"><div><div class="overline">MJESEC PO MJESEC</div><h2 id="heatmapTitle">Kalendar prinosa</h2></div><div class="heatmap-key"><span><i class="loss-dot"></i> Pad</span><span><i class="gain-dot"></i> Rast</span><span><i class="cash-dot"></i> Cash / RF</span><span><i class="excluded-dot"></i> Izvan razdoblja</span></div></div><div class="table-scroll" id="heatmap"></div><p class="panel-footnote">Mjeseci označavaju početak držanja. Cash mjeseci označeni su slovom c i ostvaruju RF. Posljednji stupac uključuje faktor i cash.</p></section>
+    <section class="panel ic-panel"><details><summary><div><div class="overline">DIONIČKI SIGNALI</div><h2>IC i cosine po odabranim mjesecima</h2></div><span class="details-toggle" aria-hidden="true">+</span></summary><p class="panel-footnote">Mjesečni prosjeci za postojeći 21 signal profitabilnosti u aktivnim mjesecima, uz njihove vlastite formacijske uzorke. IC se odnosi na rangiranje dionica; portfelj faktorskih prinosa nema zaseban cross-sectional IC. Za usporedbu provjeri dostupne mjesece i pokrivenost.</p><div class="table-scroll"><table><thead><tr><th>Signal</th><th>Spearman IC</th><th>Cosine · izvorni</th><th>Cosine · centrirani rangovi</th><th>Mjeseci</th><th>Prosječno dionica</th></tr></thead><tbody id="icBody"></tbody></table></div></details></section>
+    __REPORT_METHODOLOGY__
+    <footer><span>QUALITY / RESEARCH</span><span>Samostalan HTML · podaci ugrađeni · bez internetske veze</span></footer>
+  </main>
+</div>
+<noscript>Za interaktivne filtre uključi JavaScript. Dostupan je i <a href="report_static.html">statični izvještaj</a>.</noscript>
+<script id="report-data" type="application/json">__REPORT_DATA__</script>
+<script>__REPORT_JS__</script>
+</body></html>

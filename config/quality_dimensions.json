@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "frequency": "month-end; same formation panel and ex-ante eligibility as profitability",
+  "minimum_cross_section": 100,
+  "rank_percentile": "(average_rank - 0.5) / N, on each dimension's eligible complete-case universe",
+  "score": "100 * equal-weight mean of direction-adjusted component percentiles",
+  "internal_signal": "score / 50 - 1",
+  "missing_policy": "all listed components required; no zero imputation or reweighting",
+  "weights_fitted_to_returns": false,
+  "sector_neutral": false,
+  "dimensions": {
+    "profitability": {
+      "label": "Profitabilnost",
+      "status": "existing four-component profitability bundle, reproduced unchanged",
+      "components": {"fcf_assets_ttm": 1, "cfo_assets_ttm": 1, "gp_assets_ttm": 1, "ff2015_fy": 1},
+      "interpretation": "Higher profitability; original complete-four universe, including the narrower FF annual input."
+    },
+    "earnings_quality": {
+      "label": "Kvaliteta dobiti",
+      "status": "project composite; not an exact Sloan or S&P replication",
+      "components": {"FUND_CASHFLOW_ACCRUALS_TTM": -1, "FZ_OPERATING_ACCRUALS_AT": -1, "FUND_NET_OPERATING_ASSETS_TO_ASSETS": -1},
+      "interpretation": "Lower cash-flow accruals, operating accruals and net operating assets relative to total assets."
+    },
+    "financial_safety": {
+      "label": "Financijska sigurnost",
+      "status": "fundamental safety proxy; no beta, bankruptcy probability or sector adjustment",
+      "components": {"FUND_DEBT_TO_ASSETS": -1, "FUND_INTEREST_COVERAGE_TTM": 1, "FUND_REFINANCING_PRESSURE_PROXY": -1},
+      "interpretation": "Lower debt and near-term refinancing pressure, higher interest coverage. Undefined coverage for debt-free firms remains missing."
+    },
+    "earnings_stability": {
+      "label": "Stabilnost poslovanja",
+      "status": "existing 20-quarter earnings, CFO and sales volatility measures; not QMJ ROE volatility",
+      "components": {"FZ_EARNINGS_VOL_20Q_AT": -1, "FZ_CFO_VOL_20Q_AT": -1, "FZ_SALES_VOL_20Q_AT": -1},
+      "interpretation": "Lower volatility of quarterly earnings, CFO and sales over a contiguous 20-quarter grid, at least 12 finite observations; scaled by current average assets. Stability does not imply positive profits."
+    },
+    "quality_growth": {
+      "label": "Rast profitabilnosti — 5Y proxy",
+      "status": "five-year changes in observed profitability ratios; not QMJ residual per-share growth",
+      "components": {"DELTA60_roa_ttm": 1, "DELTA60_roe_ttm": 1, "DELTA60_gp_assets_ttm": 1, "DELTA60_cfo_assets_ttm": 1, "DELTA60_gross_margin_ttm": 1},
+      "interpretation": "Current ratio minus the same security's ratio at the formation month exactly 60 calendar months earlier; no substitution with sales growth or shorter history."
+    },
+    "investment_discipline": {
+      "label": "Investicijska disciplina",
+      "status": "conservative investment proxy; low investment is not necessarily optimal investment",
+      "components": {"FUND_ASSET_GROWTH_YOY": -1, "FZ_PPE_INVENTORY_GROWTH_AT": -1},
+      "interpretation": "Lower one-year asset growth and lower increase in PPE plus inventory divided by lagged assets."
+    },
+    "payout_dilution": {
+      "label": "Payout i razrjeđivanje",
+      "status": "cash payout and reported share-growth proxy; includes valuation through market-cap denominators",
+      "components": {"FUND_DIVIDEND_YIELD_TTM": 1, "FUND_NET_EQUITY_ISSUANCE_YIELD_TTM": -1, "FUND_SHARES_GROWTH_YOY": -1},
+      "interpretation": "Higher cash dividend yield, lower net cash equity issuance and lower reported share-count growth. Vendor share bases and splits remain limitations. Missing dividends are not assumed zero."
+    }
+  },
+  "comparators": {
+    "profitability_broad": {
+      "label": "Profitabilnost — široki 3",
+      "status": "existing broad three-component profitability comparator",
+      "components": {"fcf_assets_ttm": 1, "cfo_assets_ttm": 1, "gp_assets_ttm": 1},
+      "interpretation": "Broader universe without the annual FF input; not substituted for the original four-component indicator."
+    }
+  },
+  "excluded_after_input_audit": {
+    "FUND_WORKING_CAPITAL_ACCRUALS_YOY": "Only about 0.1% eligible coverage in 2007, 2012 and 2020; do not restrict the main earnings-quality history to this field.",
+    "FUND_CFO_CONVERSION_TTM": "CFO/net income can misrank loss-making firms and is unstable near zero earnings; not used in the main composite.",
+    "FUND_DEBT_PAYDOWN_YIELD_TTM": "Only about 0.2% eligible coverage in 2007; omitted rather than changing the payout formula over time.",
+    "FUND_REPURCHASE_YIELD_TTM": "Exact negative of net equity issuance yield; including both would double-count the same input.",
+    "FUND_SHAREHOLDER_YIELD_TTM": "Sum of dividend and repurchase yield; do not add to its own constituents."
+  }
+}

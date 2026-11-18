@@ -1,0 +1,49 @@
+{
+  "name": "quality",
+  "display_name": "Quality",
+  "research_scope": "Equity quality factor research",
+  "canonical_path": "C:/Users/Mislav/projects_r/quality",
+  "physical_storage": "C:/Users/Mislav/projects_r/quality",
+  "path_mode": "self-contained physical project directory",
+  "legacy_paths": [],
+  "removed_legacy_paths": [
+    "C:/Users/Mislav/projects_r/prof/quality"
+  ],
+  "pending_empty_directories": [
+    "C:/Users/Mislav/projects_r/prof/profitability"
+  ],
+  "git_metadata_storage": "C:/Users/Mislav/projects_r/quality/.git",
+  "renamed_on": "2026-11-12",
+  "implemented_scope": "seven quality dimensions; fixed ALL7 and CORE5 combined stock scores, monthly quintile portfolios and joint WLS factor-mimicking portfolios; matched universes, long/short sides, IC/cosine, costs, RF and regimes",
+  "implemented_indicator_dimensions": [
+    "profitability",
+    "earnings_quality",
+    "financial_safety",
+    "earnings_stability",
+    "investment_discipline",
+    "payout_dilution",
+    "quality_growth"
+  ],
+  "planned_dimensions": [],
+  "planned_research": [],
+  "combined_quality": {
+    "universe": "historical IWV constituents from etfconstituents; exact full SID, usable identity, last snapshot available at formation plus existing investability filters",
+    "first_iwv_formation": "2009-06-30",
+    "prior_broad_report": "results/combined_quality__broad_20261112/report.html",
+    "config": "config/combined_quality.json",
+    "report": "results/combined_quality/report.html",
+    "dashboard": "results/combined_quality/statistics.html",
+    "validation": "results/combined_quality/validation.json",
+    "interpretation": "exploratory results; no robust after-cost quality premium established"
+  },
+  "legacy_compatibility": {
+    "scripts": {
+      "analyze_profitability.py": "analyze_quality.py",
+      "build_profitability_bundle.py": "build_quality_profitability_bundle.py",
+      "validate_profitability_bundle.py": "validate_quality_profitability_bundle.py"
+    },
+    "results": "quality_profitability_bundle aliases profitability_bundle",
+    "source_columns": "vendor predictor identifiers retain original scientific names",
+    "random_seed": "profitability-monthly-v1 preserved to keep existing experiment identical"
+  }
+}

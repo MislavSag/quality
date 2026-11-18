@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "Quality",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "Quality${separator}${activeEditorShort}${separator}${appName}"
+  }
+}

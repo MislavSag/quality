@@ -1,0 +1,14 @@
+{
+  "signals": ["fcf_assets_ttm", "cfo_assets_ttm", "gp_assets_ttm"],
+  "regimes": ["spy_vol21", "spy_trend126", "spy_tlt_corr63", "breadth126", "dispersion21", "illiquidity21"],
+  "adaptive_threshold": "expanding median of previous month-end observations, excluding current month",
+  "minimum_previous_months": 12,
+  "continuous_standardization": "expanding past mean and sample SD, clipped to [-3,3]; log for positive volatility/dispersion/illiquidity",
+  "fixed_thresholds": {"spy_trend126": 0, "spy_tlt_corr63": 0, "breadth126": 0.5},
+  "breadth_minimum_coverage": 0.8,
+  "dispersion": "IQR of trailing 21-session stock returns / 1.349; raw SD saved as audit",
+  "hac_calendar_month_lags": 3,
+  "stability_split": "2017-01-01",
+  "primary_cost_scenarios": ["gross_unconstrained", "cost5_borrow0p5", "cost10_borrow3"],
+  "interpretation": "exploratory conditional diagnostics; chronological stability split is not an untouched out-of-sample test; no timing strategy fitted"
+}

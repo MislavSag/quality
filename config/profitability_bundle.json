@@ -1,0 +1,21 @@
+{
+  "name": "PROFIT_BUNDLE4",
+  "components": {
+    "fcf_assets_ttm": 0.25,
+    "cfo_assets_ttm": 0.25,
+    "gp_assets_ttm": 0.25,
+    "ff2015_fy": 0.25
+  },
+  "rank_basis": "each formation month, eligible securities with all four finite components",
+  "rank_percentile": "(average_rank - 0.5) / N",
+  "score": "100 * weighted mean of component rank percentiles",
+  "internal_signal": "score / 50 - 1; centered on the formation sample",
+  "missing_policy": "all four required; no imputation or silent reweighting",
+  "minimum_cross_section": 100,
+  "weights_fitted_to_returns": false,
+  "broad_comparator": "PROFIT_BUNDLE3: equal-weight FCF/CFO/gross-profit percentiles, all three required, ranks in its own complete-case universe",
+  "same_universe_comparator": "bundle3_common4 uses the first three ranks in the four-component universe",
+  "fourth_component": "local Fama-French 2015 annual OP/book equity, not the public RMW factor return and not an exact current French Library replication",
+  "public_four_factor_basket": "separate diagnostic: equal monthly allocation to the three existing gross factor returns and public RMW in identical holding windows",
+  "regime_timing": "no regime gate; report conditional returns using existing causal regimes"
+}

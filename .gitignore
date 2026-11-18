@@ -1,0 +1,17 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+__pycache__/
+data/derived/
+.playwright-cli/
+output/playwright/
+
+# Tintor/ZSE (Claude)
+data/tintor_claude/
+
+# Podaci i rezultati ne idu u javni repozitorij (izvor su podaci dobavljaca)
+data/
+results/
+tmp/
+output/

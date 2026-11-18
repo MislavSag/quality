@@ -1,0 +1,51 @@
+{
+  "_comment": "Tintor/ZSE fundamentalna strategija. Parametri su utvrdeni prije pokretanja zavrsnog razdoblja (2019-2026).",
+  "periods": {
+    "development": ["2011-05-01", "2018-12-31"],
+    "final": ["2019-01-01", "2026-11-16"]
+  },
+  "signal": {
+    "months": [3, 5, 8, 11],
+    "day_of_month": 5,
+    "publication_cutoff_hour": 16,
+    "max_statement_age_days": 200,
+    "min_universe": 8
+  },
+  "universe": {
+    "liquidity_lookback_days": 126,
+    "min_traded_day_share": 0.5,
+    "min_avg_daily_turnover_eur": 5000,
+    "exclude_sectors_prefix": ["K"]
+  },
+  "portfolio": {
+    "max_positions": 8,
+    "initial_capital_eur": 100000,
+    "hold_cash_when_short": true,
+    "min_trade_share_of_nav": 0.01
+  },
+  "execution": {
+    "price": "vwap dana izvrsenja",
+    "participation_cap": 0.2,
+    "max_fill_days": 10,
+    "commission": 0.0030,
+    "slippage": 0.0050,
+    "delisting_haircut": 0.0
+  },
+  "scoring": {
+    "liquidity_ratio_cap": 3.0,
+    "coverage_ratio_cap": 2.0
+  },
+  "dividends": {
+    "max_yield_per_payment": 0.15
+  },
+  "corporate_actions": [
+    {"isin": "HRATGRRA0003", "date": "2022-07-19", "factor": 4, "note": "ATGR podjela 1:4"},
+    {"isin": "HRRIVPRA0000", "date": "2011-09-02", "factor": 20, "note": "RIVP podjela 1:20"},
+    {"isin": "HRZABARA0009", "date": "2011-07-22", "factor": 4, "note": "ZABA podjela 1:4 (financijski sektor, izvan univerzuma)"},
+    {"isin": "HRCKMLRA0008", "date": "2021-10-07", "factor": 100, "note": "CKML podjela 1:100 (pretpostavka prema skoku cijene 7900 -> 85,5)"},
+    {"isin": "HRPLAGRA0003", "date": "2018-01-09", "factor": 4, "note": "PLAG podjela 1:4"},
+    {"isin": "HRILRARA0009", "date": "2018-02-08", "factor": 7, "note": "ILRA podjela 1:7 (344.784 -> 2.413.488 dionica)"},
+    {"isin": "HRDLKVRA0006", "date": "2021-07-27", "factor": 0.01, "note": "DLKV spajanje 100:1 u predstecajnoj nagodbi"},
+    {"isin": "HRDDJHRA0007", "date": "2022-07-14", "factor": 0.01, "note": "DDJH spajanje 100:1 (10.153.230 -> 101.532 dionica)"}
+  ]
+}

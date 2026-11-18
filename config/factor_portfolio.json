@@ -1,0 +1,19 @@
+{
+  "name": "QUALITY_PROFITABILITY_FACTOR_PORTFOLIO_4",
+  "user_selected_mode": "portfolio of four factor returns, not a stock-ranking indicator",
+  "weights": {
+    "fcf_assets_ttm": 0.25,
+    "cfo_assets_ttm": 0.25,
+    "gp_assets_ttm": 0.25,
+    "public_rmw": 0.25
+  },
+  "rebalance": "25% of portfolio capital to each factor sleeve at every monthly entry close; weights drift until next rebalance",
+  "return": "weighted arithmetic mean of the four factor returns over identical entry-close to exit-close windows",
+  "local_sleeves": "existing +100%/-100%, equal-weight 20% tails, monthly profitability strategies",
+  "rmw_sleeve": "previously saved public French daily RMW compounded within the same holding windows",
+  "local_missing_exit_baseline": "zero underlying return and assumed liquidation",
+  "costs": "gross; full implementation and public RMW trading costs not estimated",
+  "financing": "cash interest, collateral rebates and margin funding zero",
+  "optimization": "none; fixed 25% capital weights, no volatility scaling or regime timing",
+  "research_scope": "Quality project: existing profitability-only factor-return portfolio, not a full quality factor"
+}

@@ -1,0 +1,21 @@
+    <section class="panel methodology" id="methodology"><details>
+      <summary><div><div class="overline">KAKO ČITATI IZVJEŠTAJ</div><h2>Metodologija i ograničenja</h2></div><span class="details-toggle" aria-hidden="true">+</span></summary>
+      <div class="method-grid">
+        <div><h3>Portfelj i podaci</h3>
+          <p>Po 25% kapitala u FCF/imovina, CFO/imovina, bruto dobit/imovina i javni RMW. Težine se vraćaju na 25% na početku svakog mjesečnog prozora. Tri lokalna faktora koriste jednake težine u gornjih i donjih 20% dionica, uz cilj +100% long / −100% short.</p>
+          <p>Formiranje je na kraju mjeseca, ulaz na zatvaranju sljedeće sesije i izlaz nakon sljedećeg kraja mjeseca. Javni dnevni RMW složen je u iste prozore držanja. Aktivni faktorski prinosi ostaju izvorni bruto prinosi; na njih se ne dodaje još jedan RF prinos.</p>
+          <p>Nepoznati izlazi u lokalnim faktorima imaju pretpostavljen nulti prinos i zatvaranje. Prilagođene cijene, revizije izvještaja i procijenjeni datumi objave ostaju ograničenja. Stvarni troškovi trgovanja, posudbe i režimskog uključivanja/isključivanja nisu procijenjeni.</p>
+        </div>
+        <div><h3>Faktor u režimu, RF izvan režima</h3>
+          <p>Svaka režimska varijanta obuhvaća sve mjesece odabranog datumskog raspona. U mjesecu koji zadovoljava filtre koristi se faktorski prinos; u ostalim mjesecima drži se RF cash. Ako režim još nije dostupan u zajedničkom uzorku, također se drži RF. Više filtara znači njihov presjek.</p>
+          <p>RF je spremljena dnevna serija Kennetha Frencha. Prinos cash razdoblja računa se kao produkt (1 + dnevni RF), minus 1, za datume nakon ulaznog zatvaranja do i uključujući izlazno zatvaranje. Koriste se isti dnevni prozori kao za javni RMW. Nedostajući RF podaci uzrokuju prekid izgradnje izvještaja, bez imputacije nule.</p>
+          <p>CAGR, volatilnost i drawdown računaju se na cijeloj faktorsko-cash putanji. Sharpe je √12 × prosjek(R strategije − RF) / SD(R strategije − RF). Za čisti RF višak prinosa je nula pa je Sharpe nedefiniran i prikazuje se crtica.</p>
+          <p>Graf koristi stvarne kalendarske datume i kontinuiranu krivulju koja uključuje cash. Svaka krivulja počinje od 1 na svojem prvom ulazu. Sačuvane usporedbe utječu samo na graf; pokazatelji i tablice prate glavni odabir.</p>
+        </div>
+      </div>
+      <h3>Aktivni mjeseci i interpretacija</h3>
+      <p>IC i korelacije izvornih faktora prikazuju samo aktivne mjesece odabranog režima. Usporedba dvaju režima prikazuje dvije pune faktorsko-cash strategije, uz zadržavanje drugih filtara. RF linija je cash benchmark i nije peta komponenta portfelja.</p>
+      <p>Ovo je eksplorativna bruto simulacija na postojećim mjesečnim prinosima. Režim se određuje prije ulaska; budući RF prinos služi samo za obračun ostvarenog cash prinosa. Nisu procijenjeni dodatni troškovi prelaska između faktora i casha. Mjesečni drawdown ne obuhvaća padove unutar mjeseca.</p>
+      <h3>Definicije režima</h3><div id="regimeDefinitions" class="definition-grid"></div>
+      <div class="source-links"><a href="risk_free_windows.csv">RF po prozorima držanja ↗</a><a href="regime_cash_summary.csv">Sažetak faktor/RF varijanti ↗</a><a href="portfolio_monthly.csv">Izvorni faktorski prinosi ↗</a><a href="report_static.html">Raniji statični prikaz, cash 0 ↗</a><a href="interactive_manifest.json">Izvori ovog prikaza ↗</a><a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_5_factors_2x3.html">Frenchova dokumentacija ↗</a></div>
+    </details></section>

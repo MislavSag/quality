@@ -1,0 +1,14 @@
+{
+  "_comment": "Tintor pokazatelji na americkom trzistu. Bodovanje, datumi signala i starost izvjestaja preuzeti su bez izmjene iz config/tintor_claude.json (ZSE); ovdje su samo prilagodbe trzistu. Nijedan parametar nije biran na americkim podacima.",
+  "source": "H:/strategies/characteristics_eodhd_identity_1998_20261116",
+  "first_signal": "1999-03-01",
+  "split": "2019-01-01",
+  "universe": {
+    "min_market_cap_usd": 100000000,
+    "min_raw_price": 5,
+    "min_avg_dollar_volume_126d": 1000000,
+    "exclude_sectors": ["Financials", "Financial Services", "Financial"]
+  },
+  "portfolio": {"top_n": 50, "quantiles": 5},
+  "execution": {"cost_per_side": 0.0010, "cost_sensitivity": [0.0, 0.0025], "delisting_haircut_sensitivity": -0.30}
+}
